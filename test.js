@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 function fillInputTel() {
+    document.getElementById('#tel-1').reset()
+    document.getElementById('#tel-2').reset()
+    document.getElementById('#tel-3').reset()
     const pasteMes = document.querySelectorAll('.paste-me');
     pasteMes.forEach(input => {
         let tel1 = $("#tel-1")[0].value
@@ -72,12 +75,10 @@ function save () {
 }
 $(document).ready(function(){
     $('input').keyup(function(){
-        console.log('vao day khong', $(this))
         if($(this).val().length==$(this).attr("maxlength")){
             $(this).next().next().focus();
         }
+        let telInput = $("#tel-1")[0].value + $("#tel-2")[0].value + $("#tel-3")[0].value
+        document.getElementById('output').innerHTML = telInput.replace(/^(\d{4})(\d{3})(\d+)$/, "$1-$2-$3")
     });
-    if ($("#tel-1")[0].value || $("#tel-2")[0].value || $("#tel-3")[0].value) {
-        document.getElementById('telInput').innerHTML = $("#tel-1")[0].value + '-' + $("#tel-2")[0].value + '-' + $("#tel-3")[0].value
-    }
 });
