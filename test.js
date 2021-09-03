@@ -85,6 +85,6 @@ $(document).ready(function(){
             $(this).next().next().focus();
         }
         let telInput = $("#tel-1")[0].value + $("#tel-2")[0].value + $("#tel-3")[0].value
-        document.getElementById('output').innerHTML = telInput.replace(/^(\d{4})(\d{3})(\d+)$/, "$1-$2-$3")
+        document.getElementById('output').innerHTML = telInput.replace(/^(\d{4})(\d{2})(\d+)$/, "$1-$2-$3")
     });
 });
