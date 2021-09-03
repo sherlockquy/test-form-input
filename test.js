@@ -1,21 +1,27 @@
-$(function() {
-    const pasteKanji = document.querySelectorAll('.name-kanji')
-    pasteKanji.forEach(input => {
-        input.addEventListener('paste', e => {
-            const data = e.clipboardData.items[0];
-            if(data.kind == 'string' && data.type == 'text/plain') {
-                data.getAsString(str => {
-                    // console.log('string input', str)
-                    let name = $("#name-kanji")[0]
-                    let kana = $("#name-kana")[0]
-                    $.fn.autoKana(name, kana,{ katakana : true })
-                    // let tmp = $.fn.autoKana('input[name="name"] ', 'input[name="name_kana"]', {katakana: true});　//name属性で判別する場合
-                    // console.log('paste kanji', tmp)
-                });
-            }
-        });
-    })
-    $.fn.autoKana('input[name="name"] ', 'input[name="name_kana"]', {katakana:true});　//name属性で判別する場合
+// $(function() {
+//     const pasteKanji = document.querySelectorAll('.name-kanji')
+//     pasteKanji.forEach(input => {
+//         input.addEventListener('paste', e => {
+//             const data = e.clipboardData.items[0];
+//             if(data.kind == 'string' && data.type == 'text/plain') {
+//                 data.getAsString(str => {
+//                     // console.log('string input', str)
+//                     let name = $("#name-kanji")[0]
+//                     let kana = $("#name-kana")[0]
+//                     $.fn.autoKana(name, kana,{ katakana : true })
+//                     // let tmp = $.fn.autoKana('input[name="name"] ', 'input[name="name_kana"]', {katakana: true});　//name属性で判別する場合
+//                     // console.log('paste kanji', tmp)
+//                 });
+//             }
+//         });
+//     })
+//     $.fn.autoKana('input[name="name"] ', 'input[name="name_kana"]', {katakana:true});　//name属性で判別する場合
+// });
+$(document).ready(function(){
+    $.fn.autoKana("input[name$=name]","input[name$=name_kana]", {katakana:true});
+    $("form").submit(function(){
+        $("input[type=text]").each(function(){$(this).val(jQuery.trim($(this).val()))
+    })})
 });
 document.addEventListener('DOMContentLoaded', () => {
     const pasteMes = document.querySelectorAll('.paste-me');
