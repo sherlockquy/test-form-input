@@ -60,10 +60,10 @@ function testFunction() {
 
 }
 function formatTelNumber(tel) {
-    if (tel.length === 11) {
-        tel = tel.replace(/\D*(\d{4})\D*(\d{3})\D*(\d{4})\D*/, '$1 $2 $3')
+    if (tel.length === 10) {
+        tel = tel.replace(/\D*(\d{2})\D*(\d{4})\D*(\d{4})\D*/, '$1 $2 $3')
     } else {
-        tel = tel.replace(/\D*(\d{4})\D*(\d{2})\D*(\d{4})\D*/, '$1 $2 $3')
+        tel = tel.replace(/\D*(\d{3})\D*(\d{4})\D*(\d{4})\D*/, '$1 $2 $3')
     }
     if (tel.includes('-')) {
         tel = tel.replaceAll('-', ' ')
@@ -88,10 +88,10 @@ $(document).ready(function(){
             $(this).next().next().focus();
         }
         let telInput = $("#tel-1")[0].value + $("#tel-2")[0].value + $("#tel-3")[0].value
-        if (telInput.length === 11) {
-            document.getElementById('output').innerHTML = telInput.replace(/^(\d{4})(\d{3})(\d+)$/, "$1-$2-$3")
+        if (telInput.length === 10) {
+            document.getElementById('output').innerHTML = telInput.replace(/^(\d{2})(\d{4})(\d+)$/, "$1-$2-$3")
         } else {
-            document.getElementById('output').innerHTML = telInput.replace(/^(\d{4})(\d{2})(\d+)$/, "$1-$2-$3")
+            document.getElementById('output').innerHTML = telInput.replace(/^(\d{3})(\d{4})(\d+)$/, "$1-$2-$3")
         }
     });
 });
